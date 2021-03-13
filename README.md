@@ -9,3 +9,9 @@
     - MainActivity: Aparece apenas na inicialização do APP, fará o papel de Splash Screen
     - GameActivity: Responsável por toda a execução do jogo
     
+***
+
+#### Steps
+
+- 01
+    - Configuração do layout da splash screen

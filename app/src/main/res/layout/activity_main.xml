@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--TODO 02: Adicionar ID ao TextView -->
+    <!--TODO 03: Trocar texto do TextView para refletir o nome do jogo -->
+    <!--TODO 04: Definir aparência do TextView -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,5 +17,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!--TODO 05: Adicionar ImageView -->
+    <!--TODO 06: Adicionar imagem  game_splash a paste de drawables-->
+    <!--TODO 07: Configurar source da ImageView-->
+    <!--TODO 08: Configurar constraints da ImageView-->
+
+    <!--TODO 09: Adicionar outro TextView-->
+    <!--TODO 10: Configurar constraints do TextView-->
+    <!--TODO 11: Definir texto do TextView que seja a versão do aplicativo-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,4 @@
 <resources>
+<!--    TODO 01: Alterar nome do aplicativo -->
     <string name="app_name">mob_games_iot_p01</string>
 </resources>
