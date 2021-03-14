@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+    <!--    TODO 01: Adicionar outra guideline horizontal com 15%-->
+    <!--    TODO 02: Adicionar 3 TextViews alinhados horizontalmente-->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/divider"
         android:layout_width="wrap_content"
