@@ -15,6 +15,7 @@
 
 - 01
     - Configuração do layout da splash screen
+    
 -02
     - Criação da GameActivity
     - Navegação para GameActivity
