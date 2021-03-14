@@ -15,6 +15,7 @@ class GameActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //TODO 03: Trocar setContentView por DataBindingUtil
         setContentView(R.layout.activity_game)
 
         setupViews()
@@ -28,6 +29,8 @@ class GameActivity : AppCompatActivity() {
         setupListeners()
     }
 
+    //TODO 04: Criar variável correspondente ao estado do click do usuário
+    //TODO 05: Atualizar variável de acorodo com o click do usuário
     private fun setupListeners() {
         btnPedra.setOnClickListener {
             tvPlayerChoose.text = btnPedra.text

@@ -4,6 +4,8 @@ plugins {
 }
 
 android {
+    //TODO 01: habilitar databinding
+
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
