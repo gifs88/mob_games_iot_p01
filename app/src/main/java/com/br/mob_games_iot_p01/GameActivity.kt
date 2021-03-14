@@ -25,6 +25,7 @@ class GameActivity : AppCompatActivity() {
         setupListeners()
     }
 
+    //TODO 05: Alterar listener dobotões pare que eles printem o valor do texto do botão no textview da área de jogo
     private fun setupListeners() {
         btnPedra.setOnClickListener {
             Toast.makeText(this, getString(R.string.pedra), Toast.LENGTH_SHORT).show()

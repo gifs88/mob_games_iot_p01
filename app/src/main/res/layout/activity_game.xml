@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+    <!--    TODO 01: Colocar as Views do score dentro de outro constraint layout-->
+    <!--    TODO 02: Redefinir cores do score-->
+    <!--    TODO 03: Exportar text size do score para resource-->
+    <!--    TODO 04: Adicionar TextView entre Score e Ações-->
     <TextView
         android:id="@+id/player_score"
         android:layout_width="wrap_content"

@@ -26,3 +26,7 @@
     
 - 04
     - Configuração do layout referente ao placar do jogo
+    
+- 05
+    - Pequeno refactor no layout do score do jogo
+    - Utilizando área do jogo para printar a escolha do usuário
