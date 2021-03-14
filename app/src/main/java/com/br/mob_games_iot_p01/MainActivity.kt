@@ -8,4 +8,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+    //TODO 01: Criar GameActivity
+    //TODO 02: Navegar para Game activity após 5s
 }
