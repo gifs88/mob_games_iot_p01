@@ -4,8 +4,6 @@ plugins {
 }
 
 android {
-    //TODO 01: habilitar databinding
-
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
@@ -17,6 +15,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        dataBinding true
     }
 
     buildTypes {

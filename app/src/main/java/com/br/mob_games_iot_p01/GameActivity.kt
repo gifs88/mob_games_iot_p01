@@ -5,41 +5,29 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import com.br.mob_games_iot_p01.databinding.ActivityGameBinding
 
 class GameActivity : AppCompatActivity() {
 
-    private lateinit var btnPedra: Button
-    private lateinit var btnPapel: Button
-    private lateinit var btnTesoura: Button
-    private lateinit var tvPlayerChoose: TextView
+    private lateinit var bindings: ActivityGameBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //TODO 03: Trocar setContentView por DataBindingUtil
-        setContentView(R.layout.activity_game)
-
-        setupViews()
-    }
-
-    private fun setupViews() {
-        btnPedra = findViewById(R.id.pedra)
-        btnPapel = findViewById(R.id.papel)
-        btnTesoura = findViewById(R.id.tesoura)
-        tvPlayerChoose = findViewById(R.id.player_choose)
+        bindings = DataBindingUtil.setContentView(this, R.layout.activity_game)
+        bindings.playerChooseText = getString(R.string.player_choose_placeholder)
         setupListeners()
     }
 
-    //TODO 04: Criar variável correspondente ao estado do click do usuário
-    //TODO 05: Atualizar variável de acorodo com o click do usuário
     private fun setupListeners() {
-        btnPedra.setOnClickListener {
-            tvPlayerChoose.text = btnPedra.text
+        bindings.pedra.setOnClickListener {
+            bindings.playerChooseText = getString(R.string.pedra)
         }
-        btnPapel.setOnClickListener {
-            tvPlayerChoose.text = btnPapel.text
+        bindings.papel.setOnClickListener {
+            bindings.playerChooseText = getString(R.string.papel)
         }
-        btnTesoura.setOnClickListener {
-            tvPlayerChoose.text = btnTesoura.text
+        bindings.tesoura.setOnClickListener {
+            bindings.playerChooseText = getString(R.string.tesoura)
         }
     }
 }

@@ -1,120 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--TODO 02: Envolver layout dentro de tag layout -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".GameActivity">
+
+    <data>
+        <variable name="player_choose_text" type="String"/>
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/purple_200"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/top_divider">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/player_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/player_score"
-            android:textSize="@dimen/score_text_size"
-            android:textStyle="italic"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/score_divider"
-            app:layout_constraintStart_toStartOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/purple_200"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <TextView
-            android:id="@+id/score_divider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/score_divider"
-            android:textColor="@color/purple_700"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/player_score"
-            app:layout_constraintEnd_toStartOf="@+id/cpu_score"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <TextView
-            android:id="@+id/cpu_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cpu_score"
-            android:textSize="@dimen/score_text_size"
-            android:textStyle="italic"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toEndOf="@+id/score_divider"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/top_divider">
+
+            <TextView
+                android:id="@+id/player_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player_score"
+                android:textSize="@dimen/score_text_size"
+                android:textStyle="italic"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/score_divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/score_divider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/score_divider"
+                android:textColor="@color/purple_700"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/player_score"
+                app:layout_constraintEnd_toStartOf="@+id/cpu_score"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/cpu_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cpu_score"
+                android:textSize="@dimen/score_text_size"
+                android:textStyle="italic"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/score_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <TextView
+            android:id="@+id/player_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:text="@{player_choose_text}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/top_divider"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_divider"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <Button
+            android:id="@+id/pedra"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/pedra"
+            app:layout_constraintEnd_toStartOf="@+id/papel"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_divider" />
+
+        <Button
+            android:id="@+id/papel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/papel"
+            app:layout_constraintEnd_toStartOf="@+id/tesoura"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/pedra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_divider" />
+
+        <Button
+            android:id="@+id/tesoura"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/tesoura"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/papel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_divider" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_divider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <!--    TODO 06: utilizar databinding para atualizar o texto-->
-    <TextView
-        android:id="@+id/player_choose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:text="@string/player_choose_placeholder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_divider"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_divider"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/bottom_divider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
-
-    <Button
-        android:id="@+id/pedra"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/pedra"
-        app:layout_constraintEnd_toStartOf="@+id/papel"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottom_divider" />
-
-    <Button
-        android:id="@+id/papel"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/papel"
-        app:layout_constraintEnd_toStartOf="@+id/tesoura"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/pedra"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottom_divider" />
-
-    <Button
-        android:id="@+id/tesoura"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/tesoura"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/papel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottom_divider" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
