@@ -4,4 +4,7 @@
     <string name="pedra">Pedra</string>
     <string name="tesoura">Tesoura</string>
     <string name="papel">Papel</string>
+    <string name="score_divider">X</string>
+    <string name="player_score">Player</string>
+    <string name="cpu_score">CPU</string>
 </resources>
