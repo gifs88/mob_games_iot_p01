@@ -6,16 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
-    <!--    TODO 01: Dividir a tela com um guideline horizontal (3/4)-->
-    <!--    TODO 02: Adicionar 3 botões alinhadas à parte debaixo da tela-->
-    <!--    TODO 03: Definir Id para cada um dos botões-->
-    <TextView
-        android:id="@+id/textView"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/divider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GameActivity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <Button
+        android:id="@+id/pedra"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/pedra"
+        app:layout_constraintEnd_toStartOf="@+id/papel"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <Button
+        android:id="@+id/papel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/papel"
+        app:layout_constraintEnd_toStartOf="@+id/tesoura"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pedra"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <Button
+        android:id="@+id/tesoura"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/tesoura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/papel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

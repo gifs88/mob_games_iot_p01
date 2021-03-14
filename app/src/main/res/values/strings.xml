@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Pedra, Papel ou Tesoura</string>
     <string name="app_version">Version: 1.0.0</string>
+    <string name="pedra">Pedra</string>
+    <string name="tesoura">Tesoura</string>
+    <string name="papel">Papel</string>
 </resources>
