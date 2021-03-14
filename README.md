@@ -30,3 +30,6 @@
 - 05
     - Pequeno refactor no layout do score do jogo
     - Utilizando área do jogo para printar a escolha do usuário
+    
+- 06
+    - Atualizar texto na área do jogo utilizando data binding
