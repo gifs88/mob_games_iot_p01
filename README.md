@@ -16,10 +16,10 @@
 - 01
     - Configuração do layout da splash screen
     
--02
+- 02
     - Criação da GameActivity
     - Navegação para GameActivity
     
--03
+- 03
     - Configuração de parte do layout da Game Activity
     - Configuração de ClickListeners
