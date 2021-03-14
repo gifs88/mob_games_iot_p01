@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+    <!--    TODO 01: Dividir a tela com um guideline horizontal (3/4)-->
+    <!--    TODO 02: Adicionar 3 botões alinhadas à parte debaixo da tela-->
+    <!--    TODO 03: Definir Id para cada um dos botões-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
