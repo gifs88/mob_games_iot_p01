@@ -28,7 +28,9 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindings.next.setOnClickListener {
-            view.findNavController().navigate(R.id.action_startFragment_to_gameFragment)
+            val playerName = bindings.inputPlayer.text.toString()
+            val action = StartFragmentDirections.actionStartFragmentToGameFragment(playerName)
+            view.findNavController().navigate(action)
         }
     }
 
