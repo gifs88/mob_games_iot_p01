@@ -6,19 +6,22 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.ImageView
+import androidx.navigation.fragment.NavHostFragment
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var  navHostFragment: NavHostFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        goToGameActivity()
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+//        goToGameActivity()
     }
 
-    private fun goToGameActivity() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, GameActivity::class.java)
-            startActivity(intent)
-        }, 5000)
-    }
+//    private fun goToGameActivity() {
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            val intent = Intent(this, GameActivity::class.java)
+//            startActivity(intent)
+//        }, 5000)
+//    }
 }
