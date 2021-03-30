@@ -33,3 +33,8 @@
     
 - 06
     - Atualizar texto na área do jogo utilizando data binding
+    
+- 07: Refactor Challenge
+    - Implementar Navigation Component
+    - Adicionar Screen entre Splash e Game para input do Nome do Jogador
+    - Implementar Safe Args
