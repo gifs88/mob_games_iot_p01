@@ -22,18 +22,23 @@
         <action
             android:id="@+id/action_startFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_rankingFragment"
+            app:destination="@id/rankingFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.br.mob_games_iot_p01.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
-        <action
-            android:id="@+id/action_gameFragment_to_startFragment"
-            app:destination="@id/startFragment" />
         <argument
             android:name="player_name"
             app:argType="string"
             android:defaultValue="Player" />
     </fragment>
+    <fragment
+        android:id="@+id/rankingFragment"
+        android:name="com.br.mob_games_iot_p01.RankingFragment"
+        android:label="fragment_ranking"
+        tools:layout="@layout/fragment_ranking" />
 </navigation>

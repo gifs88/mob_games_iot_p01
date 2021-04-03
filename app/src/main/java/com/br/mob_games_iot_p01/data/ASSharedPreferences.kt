@@ -10,10 +10,21 @@ class ASSharedPreferences(private val context: Context) {
     private val gson = Gson()
     private val sharedPref: SharedPreferences
     private val name = "game_prefs"
+    private val playerName = "player"
     private val ranking = "ranking"
 
     init {
         sharedPref = context.getSharedPreferences(name, Context.MODE_PRIVATE)
+    }
+
+    fun savePlayer(name: String) {
+        val editor = sharedPref.edit()
+        editor.putString(playerName, name)
+        editor.apply()
+    }
+
+    fun getPlayer(): String? {
+        return sharedPref.getString(playerName, "")
     }
 
     fun updateRanking(item: RankingItem) {
