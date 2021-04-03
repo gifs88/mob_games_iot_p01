@@ -38,3 +38,10 @@
     - Implementar Navigation Component
     - Adicionar Screen entre Splash e Game para input do Nome do Jogador
     - Implementar Safe Args
+    
+- 08: Ranking Challenge
+    - Adicionar novo fragment para Top 10
+    - Criar navegação para fragment Top 10
+    - Salvar nome do jogador utilizando SharedPreferences
+    - Salvar Top 10 utilizando SharedPreferences
+    - Renderizar Top 10 utilizando RecycleView
