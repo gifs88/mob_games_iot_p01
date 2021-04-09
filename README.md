@@ -50,3 +50,9 @@
     - Implementar timer de 90s na GameFragment
     - Atualizar layout dos botões da GameFragment
     - Remover Splash da backstack após inicialização
+    
+- 10
+    - Implementar Lootie Files na game fragment
+    - Implentar seguinte regra de negócio para aparição da animação
+        - Inicio do jogo
+        - Jogador ficou 5 segundos inativo

@@ -15,6 +15,8 @@ import com.br.mob_games_iot_p01.helper.ASTimerCallback
 
 class GameFragment : Fragment(), ASTimerCallback {
 
+//    TODO 03: Implementar regra de negócio para mostrar animação
+
     val args: GameFragmentArgs by navArgs()
     var timer = ASTimer()
 
