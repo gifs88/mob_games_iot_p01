@@ -60,6 +60,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
+<!--            TODO 05: Addicionar textView para timer-->
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.Guideline
@@ -68,7 +70,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.15" />
-
+<!--TODO 03: Importar os demais resources para o projeto-->
+<!--TODO 04: Trocar os Buttons por ImageButton e associar o resource correspondente-->
         <TextView
             android:id="@+id/player_choose"
             android:layout_width="wrap_content"

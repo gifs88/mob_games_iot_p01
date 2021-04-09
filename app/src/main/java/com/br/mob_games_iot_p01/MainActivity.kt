@@ -15,13 +15,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-//        goToGameActivity()
     }
-
-//    private fun goToGameActivity() {
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            val intent = Intent(this, GameActivity::class.java)
-//            startActivity(intent)
-//        }, 5000)
-//    }
 }

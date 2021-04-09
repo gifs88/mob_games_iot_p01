@@ -10,6 +10,8 @@
         android:name="com.br.mob_games_iot_p01.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
+<!--        TODO 01: configurar action remover fragment do backstack-->
+<!--        https://developer.android.com/guide/navigation/navigation-navigate#pop-->
         <action
             android:id="@+id/action_splashFragment_to_startFragment"
             app:destination="@id/startFragment" />

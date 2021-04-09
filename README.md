@@ -45,3 +45,8 @@
     - Salvar nome do jogador utilizando SharedPreferences
     - Salvar Top 10 utilizando SharedPreferences
     - Renderizar Top 10 utilizando RecycleView
+    
+- 09
+    - Implementar timer de 90s na GameFragment
+    - Atualizar layout dos botões da GameFragment
+    - Remover Splash da backstack após inicialização
