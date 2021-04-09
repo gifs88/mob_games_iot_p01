@@ -60,7 +60,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-<!--            TODO 05: Addicionar textView para timer-->
+            <TextView
+                android:id="@+id/timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/cpu_score"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/default_margin"
+                tools:text="90"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -90,33 +98,33 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.75" />
 
-        <Button
+        <ImageButton
             android:id="@+id/pedra"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/pedra"
+            android:src="@drawable/pedra"
             app:layout_constraintEnd_toStartOf="@+id/papel"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bottom_divider" />
 
-        <Button
+        <ImageButton
             android:id="@+id/papel"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/papel"
+            android:src="@drawable/papel"
             app:layout_constraintEnd_toStartOf="@+id/tesoura"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/pedra"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bottom_divider" />
 
-        <Button
+        <ImageButton
             android:id="@+id/tesoura"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/tesoura"
+            android:src="@drawable/tesoura"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/papel"

@@ -27,8 +27,7 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed({
-            //TODO 02: Atualizar navigation utilizando a classe Directions
-            view.findNavController().navigate(R.id.action_splashFragment_to_startFragment)
+            view.findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToStartFragment())
         }, 3000)
     }
 
