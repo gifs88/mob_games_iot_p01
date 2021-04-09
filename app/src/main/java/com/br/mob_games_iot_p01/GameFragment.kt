@@ -7,12 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.br.mob_games_iot_p01.databinding.FragmentGameBinding
+import com.br.mob_games_iot_p01.helper.ASTimer
+import com.br.mob_games_iot_p01.helper.ASTimerCallback
 
-class GameFragment : Fragment() {
+class GameFragment : Fragment(), ASTimerCallback {
 
     val args: GameFragmentArgs by navArgs()
+    var timer = ASTimer()
 
     private lateinit var bindings: FragmentGameBinding
 
@@ -42,6 +46,17 @@ class GameFragment : Fragment() {
         bindings.tesoura.setOnClickListener {
             bindings.playerChooseText = getString(R.string.tesoura)
         }
+
+        timer.setTimerCallback(this)
+        timer.initTimer(90000)
+    }
+
+    override fun onTimerStop() {
+        findNavController().popBackStack()
+    }
+
+    override fun onChange(value: Long) {
+        bindings.timer.text = value.toString()
     }
 
 }
