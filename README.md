@@ -56,3 +56,4 @@
     - Implentar seguinte regra de negócio para aparição da animação
         - Inicio do jogo
         - Jogador ficou 5 segundos inativo
+        

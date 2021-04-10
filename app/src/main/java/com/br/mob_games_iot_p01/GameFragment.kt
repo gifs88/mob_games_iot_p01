@@ -15,10 +15,11 @@ import com.br.mob_games_iot_p01.helper.ASTimerCallback
 
 class GameFragment : Fragment(), ASTimerCallback {
 
-//    TODO 03: Implementar regra de negócio para mostrar animação
-
-    val args: GameFragmentArgs by navArgs()
-    var timer = ASTimer()
+    private val args: GameFragmentArgs by navArgs()
+    private val timer = ASTimer()
+    private val playerTimer = ASTimer()
+    private val PLAYER_TIMER_TAG = "PLAYER"
+    private val GAME_TIMER_TAG = "GAME"
 
     private lateinit var bindings: FragmentGameBinding
 
@@ -41,24 +42,45 @@ class GameFragment : Fragment(), ASTimerCallback {
 
         bindings.pedra.setOnClickListener {
             bindings.playerChooseText = getString(R.string.pedra)
+            playerAction()
         }
         bindings.papel.setOnClickListener {
             bindings.playerChooseText = getString(R.string.papel)
+            playerAction()
         }
         bindings.tesoura.setOnClickListener {
             bindings.playerChooseText = getString(R.string.tesoura)
+            playerAction()
         }
 
         timer.setTimerCallback(this)
-        timer.initTimer(90000)
+        timer.initTimer(90000, GAME_TIMER_TAG)
+        playerTimer.setTimerCallback(this)
     }
 
-    override fun onTimerStop() {
-        findNavController().popBackStack()
+    private fun playerAction() {
+        bindings.playerChoose.visibility = View.VISIBLE
+        bindings.animationView.visibility = View.GONE
+        playerTimer.initTimer(5000, PLAYER_TIMER_TAG)
     }
 
-    override fun onChange(value: Long) {
-        bindings.timer.text = value.toString()
+    private fun playerInactive() {
+        bindings.animationView.visibility = View.VISIBLE
+        bindings.playerChoose.visibility = View.GONE
+    }
+
+    override fun onTimerStop(name: String) {
+        when(name) {
+            GAME_TIMER_TAG -> findNavController().popBackStack()
+            PLAYER_TIMER_TAG -> playerInactive()
+        }
+    }
+
+    override fun onChange(name: String, value: Long) {
+        when(name) {
+            GAME_TIMER_TAG -> bindings.timer.text = value.toString()
+            PLAYER_TIMER_TAG -> {}
+        }
     }
 
 }

@@ -51,5 +51,6 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.4"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.4"
     implementation 'com.google.code.gson:gson:2.8.6'
-    //TODO 01: implementar dependência do Lottie Files
+    implementation "com.airbnb.android:lottie:3.4.0"
+
 }
