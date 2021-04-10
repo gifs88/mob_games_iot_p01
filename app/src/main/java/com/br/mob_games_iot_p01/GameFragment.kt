@@ -40,19 +40,21 @@ class GameFragment : Fragment(), ASTimerCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindings.playerScore.text = args.playerName
-        bindings.playerChooseText = getString(R.string.player_choose_placeholder)
+        bindings.playerName = args.playerName
+        bindings.playerScoreValue = 0
+        bindings.cpuScoreValue = 0
+        //bindings.playerChooseText = getString(R.string.player_choose_placeholder)
 
         bindings.pedra.setOnClickListener {
-            bindings.playerChooseText = getString(R.string.pedra)
+            //bindings.playerChooseText = getString(R.string.pedra)
             playerAction(Constants.pedra)
         }
         bindings.papel.setOnClickListener {
-            bindings.playerChooseText = getString(R.string.papel)
+            //bindings.playerChooseText = getString(R.string.papel)
             playerAction(Constants.papel)
         }
         bindings.tesoura.setOnClickListener {
-            bindings.playerChooseText = getString(R.string.tesoura)
+            //bindings.playerChooseText = getString(R.string.tesoura)
             playerAction(Constants.tesoura)
         }
 
@@ -62,9 +64,13 @@ class GameFragment : Fragment(), ASTimerCallback {
     }
 
     private fun playerAction(choice: String) {
+        val play_result = game.play(choice)
+        bindings.playerChooseText = play_result.player_choose.toUpperCase()
+        bindings.cpuScoreValue = play_result.cpu_score
+        bindings.playerScoreValue = play_result.player_score
         bindings.playerChoose.visibility = View.VISIBLE
         bindings.animationView.visibility = View.GONE
-        val play_result = game.play(choice)
+
         //playerTimer.initTimer(5000, PLAYER_TIMER_TAG)
     }
 
