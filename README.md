@@ -57,3 +57,12 @@
         - Inicio do jogo
         - Jogador ficou 5 segundos inativo
         
+- 11
+    - Implementar escolha aleatória da CPU
+    - Implementar regras de negócio do jogo
+    - Implementar placar
+    - Implementar score com a seguinte regra de negócio:
+        - Empate 0 pts
+        - Vitória + 10 pts
+        - Derrota - 10 pts
+    
