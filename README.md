@@ -66,3 +66,7 @@
         - Vitória + 10 pts
         - Derrota - 10 pts
     
+- 12
+    - Mostrar score final para o jogador ao final do jogo por 5s
+    - Salvar score no shared Preferences
+    - Implementar calculateRankingPosition no sharedPreferences
