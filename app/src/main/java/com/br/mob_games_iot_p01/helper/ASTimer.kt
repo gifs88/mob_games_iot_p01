@@ -10,7 +10,7 @@ class ASTimer {
         this.callback = callback
     }
 
-    fun initTimer(time: Long, name: String) {
+    fun initTimer(time: Long, name: String) : CountDownTimer {
         val timer = object: CountDownTimer(time, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 callback?.onChange(name, millisUntilFinished/1000)
@@ -20,12 +20,9 @@ class ASTimer {
                 this.cancel()
                 callback?.onTimerStop(name)
             }
-
-            fun cancelTimer() {
-                this.cancel()
-            }
         }
         timer.start()
+        return timer
     }
 }
 

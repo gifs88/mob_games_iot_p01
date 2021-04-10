@@ -2,11 +2,15 @@ package com.br.mob_games_iot_p01
 
 import android.database.DatabaseUtils
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.br.mob_games_iot_p01.databinding.FragmentGameBinding
@@ -18,17 +22,14 @@ import com.br.mob_games_iot_p01.helper.Constants
 class GameFragment : Fragment(), ASTimerCallback {
 
     private val args: GameFragmentArgs by navArgs()
-    private val timer = ASTimer()
-    private val playerTimer = ASTimer()
+    private val timerFactory = ASTimer()
+    private lateinit var timer: CountDownTimer
+    private lateinit var playerTimer: CountDownTimer
     private val game = ASGame()
     private val PLAYER_TIMER_TAG = "PLAYER"
     private val GAME_TIMER_TAG = "GAME"
 
     private lateinit var bindings: FragmentGameBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,35 +44,44 @@ class GameFragment : Fragment(), ASTimerCallback {
         bindings.playerName = args.playerName
         bindings.playerScoreValue = 0
         bindings.cpuScoreValue = 0
-        //bindings.playerChooseText = getString(R.string.player_choose_placeholder)
 
         bindings.pedra.setOnClickListener {
-            //bindings.playerChooseText = getString(R.string.pedra)
             playerAction(Constants.pedra)
         }
         bindings.papel.setOnClickListener {
-            //bindings.playerChooseText = getString(R.string.papel)
             playerAction(Constants.papel)
         }
         bindings.tesoura.setOnClickListener {
-            //bindings.playerChooseText = getString(R.string.tesoura)
             playerAction(Constants.tesoura)
         }
 
-        timer.setTimerCallback(this)
-        timer.initTimer(90000, GAME_TIMER_TAG)
-        playerTimer.setTimerCallback(this)
+        timerFactory.setTimerCallback(this)
+        timer = timerFactory.initTimer(90000, GAME_TIMER_TAG)
+        playerTimer = timerFactory.initTimer(0, PLAYER_TIMER_TAG)
     }
 
     private fun playerAction(choice: String) {
         val play_result = game.play(choice)
-        bindings.playerChooseText = play_result.player_choose.toUpperCase()
+        playerTimer.cancel()
+
+        bindings.pedra.isEnabled = false
+        bindings.papel.isEnabled = false
+        bindings.tesoura.isEnabled = false
+
+        bindings.playerChooseText = "${args.playerName}: ${play_result.player_choose.toUpperCase()}" +
+                "\nCPU: ${play_result.cpu_choose.toUpperCase()}" +
+                "\nVencendor: ${play_result.winner?.toUpperCase() ?: "EMPATE"}"
         bindings.cpuScoreValue = play_result.cpu_score
         bindings.playerScoreValue = play_result.player_score
         bindings.playerChoose.visibility = View.VISIBLE
         bindings.animationView.visibility = View.GONE
 
-        //playerTimer.initTimer(5000, PLAYER_TIMER_TAG)
+        Handler(Looper.getMainLooper()).postDelayed({
+            bindings.pedra.isEnabled = true
+            bindings.papel.isEnabled = true
+            bindings.tesoura.isEnabled = true
+            playerTimer = timerFactory.initTimer(5000, PLAYER_TIMER_TAG)
+        }, 1000)
     }
 
     private fun playerInactive() {
