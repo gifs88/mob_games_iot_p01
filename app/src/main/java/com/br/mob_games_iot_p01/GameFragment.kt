@@ -1,5 +1,6 @@
 package com.br.mob_games_iot_p01
 
+import android.content.Context
 import android.database.DatabaseUtils
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -13,6 +14,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.br.mob_games_iot_p01.data.ASSharedPreferences
+import com.br.mob_games_iot_p01.data.GameResult
+import com.br.mob_games_iot_p01.data.RankingItem
 import com.br.mob_games_iot_p01.databinding.FragmentGameBinding
 import com.br.mob_games_iot_p01.helper.ASGame
 import com.br.mob_games_iot_p01.helper.ASTimer
@@ -21,6 +25,7 @@ import com.br.mob_games_iot_p01.helper.Constants
 
 class GameFragment : Fragment(), ASTimerCallback {
 
+    private lateinit var sharedPrefs: ASSharedPreferences
     private val args: GameFragmentArgs by navArgs()
     private val timerFactory = ASTimer()
     private lateinit var timer: CountDownTimer
@@ -30,6 +35,11 @@ class GameFragment : Fragment(), ASTimerCallback {
     private val GAME_TIMER_TAG = "GAME"
 
     private lateinit var bindings: FragmentGameBinding
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        sharedPrefs = ASSharedPreferences(context)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -92,22 +102,11 @@ class GameFragment : Fragment(), ASTimerCallback {
     override fun onTimerStop(name: String) {
         when(name) {
             GAME_TIMER_TAG -> {
-                playerTimer.cancel()
                 val result = game.getResult()
+                sharedPrefs.updateRanking(RankingItem(args.playerName, result.score))
 
-                if (result.player_won) {
-                    bindings.playerChooseText = "${args.playerName} venceu! \nPontuação: ${result.score}"
-                } else {
-                    if (result.score == 0) {
-                        bindings.playerChooseText = "Empate!"
-                    } else {
-                        bindings.playerChooseText = "CPU venceu! \nPontuação: ${result.score}"
-                    }
-                }
-
-                bindings.playerChoose.visibility = View.VISIBLE
-                bindings.animationView.visibility = View.GONE
-
+                playerTimer.cancel()
+                setWinnerResult(result)
                 endGame()
             }
             PLAYER_TIMER_TAG -> playerInactive()
@@ -119,6 +118,21 @@ class GameFragment : Fragment(), ASTimerCallback {
             GAME_TIMER_TAG -> bindings.timer.text = value.toString()
             PLAYER_TIMER_TAG -> {}
         }
+    }
+
+    private fun setWinnerResult(result: GameResult) {
+        if (result.player_won) {
+            bindings.playerChooseText = "${args.playerName} venceu! \nPontuação: ${result.score}"
+        } else {
+            if (result.score == 0) {
+                bindings.playerChooseText = "Empate!"
+            } else {
+                bindings.playerChooseText = "CPU venceu! \nPontuação: ${result.score}"
+            }
+        }
+
+        bindings.playerChoose.visibility = View.VISIBLE
+        bindings.animationView.visibility = View.GONE
     }
 
     private fun endGame() {
