@@ -91,7 +91,25 @@ class GameFragment : Fragment(), ASTimerCallback {
 
     override fun onTimerStop(name: String) {
         when(name) {
-            GAME_TIMER_TAG -> findNavController().popBackStack()
+            GAME_TIMER_TAG -> {
+                playerTimer.cancel()
+                val result = game.getResult()
+
+                if (result.player_won) {
+                    bindings.playerChooseText = "${args.playerName} venceu! \nPontuação: ${result.score}"
+                } else {
+                    if (result.score == 0) {
+                        bindings.playerChooseText = "Empate!"
+                    } else {
+                        bindings.playerChooseText = "CPU venceu! \nPontuação: ${result.score}"
+                    }
+                }
+
+                bindings.playerChoose.visibility = View.VISIBLE
+                bindings.animationView.visibility = View.GONE
+
+                endGame()
+            }
             PLAYER_TIMER_TAG -> playerInactive()
         }
     }
@@ -101,6 +119,12 @@ class GameFragment : Fragment(), ASTimerCallback {
             GAME_TIMER_TAG -> bindings.timer.text = value.toString()
             PLAYER_TIMER_TAG -> {}
         }
+    }
+
+    private fun endGame() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            findNavController().popBackStack()
+        }, 5000)
     }
 
 }

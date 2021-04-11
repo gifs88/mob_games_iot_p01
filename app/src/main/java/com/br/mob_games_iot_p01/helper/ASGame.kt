@@ -1,5 +1,6 @@
 package com.br.mob_games_iot_p01.helper
 
+import com.br.mob_games_iot_p01.data.GameResult
 import com.br.mob_games_iot_p01.data.PlayItem
 
 class ASGame {
@@ -53,5 +54,19 @@ class ASGame {
         }
 
         return PlayItem(player_choice, cpu_choice, player_score, cpu_score, winner, score)
+    }
+
+    fun getResult(): GameResult {
+        return when {
+            score == 0 -> {
+                GameResult(false, score)
+            }
+            score < 0 -> {
+                GameResult(false, score)
+            }
+            else -> {
+                GameResult(true, score)
+            }
+        }
     }
 }

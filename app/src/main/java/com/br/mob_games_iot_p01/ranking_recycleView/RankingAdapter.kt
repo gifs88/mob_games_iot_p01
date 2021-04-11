@@ -16,7 +16,7 @@ class RankingAdapter(val data: ArrayList<RankingItem>) : RecyclerView.Adapter<Ra
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: RankingViewHolder, position: Int) {
-        holder.position.text = "${data[position].position.toString()}°"
+        holder.position.text = "${position.plus(1)}°"
         holder.player.text = data[position].player
         holder.score.text = "${data[position].score} pts"
     }

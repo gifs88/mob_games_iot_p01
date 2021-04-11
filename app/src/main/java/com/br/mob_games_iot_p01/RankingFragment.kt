@@ -38,14 +38,14 @@ class RankingFragment : Fragment() {
 }
 
 val MOCK = arrayListOf<RankingItem>(
-    RankingItem("João", 1212, 1),
-    RankingItem("Maria", 1111, 2),
-    RankingItem("João", 735, 3),
-    RankingItem("Chuck", 722, 4),
-    RankingItem("Peter Pan", 716, 5),
-    RankingItem("Peter Pan", 544, 6),
-    RankingItem("Sofia", 543, 7),
-    RankingItem("Alberto", 541, 8),
-    RankingItem("Bart", 212, 9),
-    RankingItem("Homer", 71, 10)
+    RankingItem("João", 1211),
+    RankingItem("Maria", 1111),
+    RankingItem("João", 735),
+    RankingItem("Chuck", 722),
+    RankingItem("Peter Pan", 716),
+    RankingItem("Peter Pan", 544),
+    RankingItem("Sofia", 543),
+    RankingItem("Alberto", 541),
+    RankingItem("Bart", 212),
+    RankingItem("Homer", 71)
 )
