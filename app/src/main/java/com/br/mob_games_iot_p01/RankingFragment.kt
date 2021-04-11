@@ -32,20 +32,7 @@ class RankingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val rv: RecyclerView = view.findViewById(R.id.rv)
         rv.layoutManager = LinearLayoutManager(activity)
-        rv.adapter = RankingAdapter(MOCK)
+        rv.adapter = RankingAdapter(sharedPrefs.getRanking())
     }
 
 }
-
-val MOCK = arrayListOf<RankingItem>(
-    RankingItem("João", 1211),
-    RankingItem("Maria", 1111),
-    RankingItem("João", 735),
-    RankingItem("Chuck", 722),
-    RankingItem("Peter Pan", 716),
-    RankingItem("Peter Pan", 544),
-    RankingItem("Sofia", 543),
-    RankingItem("Alberto", 541),
-    RankingItem("Bart", 212),
-    RankingItem("Homer", 71)
-)

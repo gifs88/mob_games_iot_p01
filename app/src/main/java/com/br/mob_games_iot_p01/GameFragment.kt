@@ -102,6 +102,10 @@ class GameFragment : Fragment(), ASTimerCallback {
     override fun onTimerStop(name: String) {
         when(name) {
             GAME_TIMER_TAG -> {
+                bindings.pedra.isEnabled = false
+                bindings.papel.isEnabled = false
+                bindings.tesoura.isEnabled = false
+
                 val result = game.getResult()
                 sharedPrefs.updateRanking(RankingItem(args.playerName, result.score))
 

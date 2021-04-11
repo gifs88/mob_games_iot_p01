@@ -28,7 +28,7 @@ class ASSharedPreferences(private val context: Context) {
     }
 
     fun updateRanking(item: RankingItem) {
-        val rankingList = calculateRankingPosition(getRanking())
+        val rankingList = calculateRankingPosition(getRanking(), item)
         val rankingString = gson.toJson(rankingList)
 
         val editor = sharedPref.edit()
@@ -41,7 +41,11 @@ class ASSharedPreferences(private val context: Context) {
         return gson.fromJson(rankingString, object : TypeToken<ArrayList<RankingItem>>() {}.type)
     }
 
-    fun calculateRankingPosition(ranking: ArrayList<RankingItem>): ArrayList<RankingItem> {
-        return  ranking
+    private fun calculateRankingPosition(ranking: ArrayList<RankingItem>, item: RankingItem): ArrayList<RankingItem> {
+        ranking.add(item)
+        val sortedRanking = ranking.sortedBy { item -> item.score.times(-1) }
+        sortedRanking.dropLast(1)
+
+        return  ArrayList(sortedRanking)
     }
 }
