@@ -43,9 +43,15 @@ class ASSharedPreferences(private val context: Context) {
 
     private fun calculateRankingPosition(ranking: ArrayList<RankingItem>, item: RankingItem): ArrayList<RankingItem> {
         ranking.add(item)
-        val sortedRanking = ranking.sortedBy { item -> item.score.times(-1) }
-        sortedRanking.dropLast(1)
 
-        return  ArrayList(sortedRanking)
+        val sortedRanking = ArrayList(
+            ranking.sortedBy { item -> item.score.times(-1) }
+        )
+
+        if (ranking.size > 10) {
+            sortedRanking.dropLast(1)
+        }
+
+        return  sortedRanking
     }
 }
