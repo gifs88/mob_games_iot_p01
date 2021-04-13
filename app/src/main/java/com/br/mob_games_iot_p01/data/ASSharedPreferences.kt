@@ -49,7 +49,7 @@ class ASSharedPreferences(private val context: Context) {
         )
 
         if (ranking.size > 10) {
-            sortedRanking = ArrayList(sortedRanking.dropLast(2))
+            sortedRanking = ArrayList(sortedRanking.dropLast(1))
         }
 
         return  sortedRanking
